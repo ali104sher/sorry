@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I'm Sorry, My Chellam 💔</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffe5ec;
+      overflow: hidden;
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #ff4b5c;
+      margin-bottom: 10px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    p {
+      font-size: 1.3em;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      border-right: 2px solid #ff4b5c;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(40, end), blink 0.8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from { border-color: transparent }
+      to { border-color: #ff4b5c }
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1em;
+      background-color: #ff4b5c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    button:hover {
+      background-color: #ff1f3d;
+    }
+
+    .slideshow {
+      margin: 30px auto;
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease-out;
+    }
+
+    .slideshow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    audio { display: none; }
+
+    .voice-button {
+      margin-top: 20px;
+      font-size: 1em;
+      background: #ffc107;
+      color: #222;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .hidden-message {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: #ff1493;
+      animation: fadeIn 2s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <h1>I'm Sorry, Chellam 💔</h1>
+    <p>You’re my sunshine, my peace, my person. I made a mistake, and I miss you more than words can say. Please forgive me.</p>
+
+    <div class="slideshow">
+      <img id="slide" src="https://placekitten.com/300/300" alt="Cute moment" />
+    </div>
+
+    <button onclick="showMessage()">Forgive Me?</button>
+    <div id="hidden" class="hidden-message">Forever Yours 💖</div>
+
+    <br />
+    <button class="voice-button" onclick="document.getElementById('voice').play()">Play My Voice 💌</button>
+
+    <audio id="voice" src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav"></audio>
+    <audio autoplay loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <script>
+    // Heart animation generator
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      document.getElementById('hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 300);
+
+    // Slideshow
+    const images = [
+      "https://placekitten.com/300/300",
+      "https://placebear.com/300/300",
+      "https://placebeard.it/300x300"
+    ];
+    let index = 0;
+    setInterval(() => {
+      index = (index + 1) % images.length;
+      document.getElementById("slide").src = images[index];
+    }, 3000);
+
+    // Hidden message
+    function showMessage() {
+      document.getElementById("hidden").style.display = "block";
+    }
+  </script>
+</body>
+</html>
