@@ -2,111 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sorry My Wifey ❤️</title>
+  <title>For You, My Wifey 💗</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
-      background: #000;
       height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-family: "Courier New", Courier, monospace;
+      font-family: "Poppins", sans-serif;
+      color: #fff;
       overflow: hidden;
+      text-align: center;
     }
 
     .typing {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      max-width: 85%;
+      min-height: 120px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      border-right: 2px solid rgba(255,255,255,0.8);
       white-space: pre-wrap;
-      border-right: 2px solid white;
       overflow: hidden;
-      text-align: center;
-      max-width: 80%;
-      margin-bottom: 20px;
     }
 
     .slideshow {
-      width: 320px;
-      height: 320px;
-      border-radius: 20px;
+      width: 300px;
+      height: 300px;
+      border-radius: 25px;
       overflow: hidden;
-      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 0 30px rgba(255,182,193,0.7);
+      background: #000;
     }
 
     .slideshow img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      animation: fadeIn 1s ease-in-out;
+      animation: fade 1.2s ease-in-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes fade {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 14px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.6);
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <div class="typing" id="typing"></div>
 
   <div class="slideshow">
-    <img id="slide" src="541250411_1344251300686509_2237375841800351322_n.jpg" alt="My Wifey">
+    <img id="slide" src="541250411_1344251300686509_2237375841800351322_n.jpg">
   </div>
 
   <script>
-    // 💬 Typing Text
-    const text = "My dear wifey Lathiga ❤️\n\nSorry that I hurt you.. 🥺\nYou are my world, my life.\nI promise to keep you smiling always 💕";
+    // 💌 Typing Message
+    const text =
+      "Hey my wifey Lathiga 💗\n\n" +
+      "I know I didn’t listen to you today… and I’m really sorry 🥺\n\n" +
+      "That movie wasn’t more important than you.\n" +
+      "You are my comfort, my happiness, my first choice.\n\n" +
+      "I promise I’ll do better… not just say it, but show it 🤍";
+
     let i = 0;
+    const speed = 70;
 
     function typeWriter() {
       if (i < text.length) {
         document.getElementById("typing").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 80);
+        setTimeout(typeWriter, speed);
       } else {
         document.getElementById("typing").style.borderRight = "none";
       }
     }
     window.onload = typeWriter;
 
-    // 🖼 Slideshow
+    // 🖼 Slideshow Images (First Meetup 💕)
     const images = [
-      "72htHxQ2_3X9BSH_72RRbq_480000.jpg"
-      "72htHxQ2_4EjkFj_GGCta_479037.jpg"
-      "72htHxQ2_4FEzv6_38B3cU_479037.jpg"
-      "72htHxQ2_4Q3E2Z_3QHJva_480000.jpg"
-      "72htHxQ2_5d88XV_2nkKbP_480000.jpg"
-      "72htHxQ2_5iPGFu_5sxHNu_480000.jpg"
-      "72htHxQ2_5jtXzi_5yRrrg_479037.jpg"
-      "72htHxQ2_5rcWEg_4szVQY_480000.jpg"
-      "72htHxQ2_5rFJHS_4JBANw_479037.jpg"
-      "72htHxQ2_5y6Vg4_4pTEde_3143529.jpg"
-      "72htHxQ2_6aBkos_4DxVTX_479037.jpg"
-      "72htHxQ2_6Dh9mj_4Stp2Q_479037.jpg"
-      "72htHxQ2_6F81eJ_7968UX_480000.jpg"
-      "72htHxQ2_7DKS9T_h4eJx_480000.jpg"
-      "72htHxQ2_7MC7v7_7EbJt9_480000.jpg"
-      "72htHxQ2_7WBv9y_2pzn8b_479037.jpg"
-      "72htHxQ2_phwbC_6gPfm5_480000.jpg"
-      "IMG_20251202_050623.jpg"
-      "IMG_20251202_050717.jpg"
+      "72htHxQ2_3X9BSH_72RRbq_480000.jpg",
+      "72htHxQ2_4EjkFj_GGCta_479037.jpg",
+      "72htHxQ2_4FEzv6_38B3cU_479037.jpg",
+      "72htHxQ2_4Q3E2Z_3QHJva_480000.jpg",
+      "72htHxQ2_5d88XV_2nkKbP_480000.jpg",
+      "72htHxQ2_5iPGFu_5sxHNu_480000.jpg",
+      "72htHxQ2_5jtXzi_5yRrrg_479037.jpg",
+      "72htHxQ2_5rcWEg_4szVQY_480000.jpg",
+      "72htHxQ2_5rFJHS_4JBANw_479037.jpg",
+      "IMG_20251202_050623.jpg",
+      "IMG_20251202_050717.jpg",
       "541250411_1344251300686509_2237375841800351322_n.jpg",
       "541904851_2224139301443426_7696303569780954809_n.jpg",
-      "542402097_799198086009255_8490249445650042798_n.jpg",
-      "Earthy Lifestyle Photo Collage Mood Board Instagram Post_20250717_163316_0000.jpg"
+      "542402097_799198086009255_8490249445650042798_n.jpg"
     ];
-    let index = 0;
 
+    let index = 0;
     setInterval(() => {
       index = (index + 1) % images.length;
       document.getElementById("slide").src = images[index];
-    }, 3000); // 3 sec per image
+    }, 2800);
+
+    // 💗 Floating Hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (12 + Math.random() * 18) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
   </script>
+
 </body>
 </html>
